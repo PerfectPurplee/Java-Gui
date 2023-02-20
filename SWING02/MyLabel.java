@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class MyLabel extends JLabel {
 
-    ImageIcon image = new ImageIcon("gieniu.png");
+    ImageIcon image = new ImageIcon("pengu.png");
     Border border = BorderFactory.createLineBorder(Color.pink, 15,true);
     MyLabel() {
         this.setText("Simon, do you even code?");
