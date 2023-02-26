@@ -9,6 +9,7 @@ public class Paddles extends Rectangle implements KeyListener {
     int id;
     int setPositionY = 0;
     int setDirectionY = 0;
+    int getSetDirectionY2 = 0;
 
     Paddles(int x, int setPositionY, int width, int height, int id) {
         super(x, setPositionY, width, height);
@@ -18,7 +19,7 @@ public class Paddles extends Rectangle implements KeyListener {
     }
 
 
-    public void draw(Graphics g) {
+    public void paint(Graphics g) {
         g.fillRect(x,setPositionY,width,height);
         g.setColor(Color.PINK);
     }
@@ -36,20 +37,20 @@ public class Paddles extends Rectangle implements KeyListener {
             case 1:
                 if (e.getKeyCode() == KeyEvent.VK_W) {
                     setDirectionY = -10;
-                    move();
+                    movePad1();
                 }
                 if (e.getKeyCode() == KeyEvent.VK_S) {
                     setDirectionY = 10;
-                    move();
+                    movePad1();
                 }
             case 2:
                 if (e.getKeyCode() == KeyEvent.VK_UP) {
-                    setDirectionY = -10;
-                    move();
+                    getSetDirectionY2 = -10;
+                    movePad2();
                 }
                 if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-                    setDirectionY = 10;
-                    move();
+                    getSetDirectionY2 = 10;
+                    movePad2();
                 }
         }
     }
@@ -60,25 +61,28 @@ public class Paddles extends Rectangle implements KeyListener {
             case 1:
                 if (e.getKeyCode() == KeyEvent.VK_W) {
                     setDirectionY = 0;
-                    move();
+                    movePad1();
                 }
                 if (e.getKeyCode() == KeyEvent.VK_S) {
                     setDirectionY = 0;
-                    move();
+                    movePad1();
                 }
             case 2:
                 if (e.getKeyCode() == KeyEvent.VK_UP) {
-                    setDirectionY = 0;
-                    move();
+                    getSetDirectionY2 = 0;
+                    movePad2();
                 }
                 if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-                    setDirectionY = 0;
-                    move();
+                    getSetDirectionY2 = 0;
+                    movePad2();
                 }
         }
     }
 
-    public void move() {
+    public void movePad1() {
         setPositionY = setPositionY + setDirectionY;
+    }
+    public void movePad2() {
+        setPositionY = setPositionY + getSetDirectionY2;
     }
 }

@@ -1,9 +1,5 @@
 package SWING07Game2;
 
-import SWING06GameAttempt.Ball;
-import SWING06GameAttempt.Paddle;
-import SWING06GameAttempt.Score;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -12,18 +8,22 @@ import java.util.Random;
 
 public class GamePanel extends JPanel implements KeyListener, Runnable {
 
+    Ball ball;
     Paddles paddle1;
     Paddles paddle2;
     Dimension dimension = new Dimension(800, 600);
     Thread gamethread;
     int setpositionY = 0;
     int setdirectionY = 0;
+    Random random;
 
 
     GamePanel() {
 
+        random = new Random();
         paddle1 = new Paddles(0,200,50,100,1);
         paddle2 = new Paddles(750,200,50,100,2);
+        ball = new Ball(400 - 20,random.nextInt(600 - 20),20,20);
         this.setFocusable(true);
         this.addKeyListener(this);
         this.setPreferredSize(dimension);
@@ -35,8 +35,10 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
 
 public void paint(Graphics g) {
 
-        paddle1.draw(g);
-        paddle2.draw(g);
+        paddle1.paint(g);
+        paddle2.paint(g);
+        ball.paint(g);
+
 
 }
 
@@ -60,8 +62,9 @@ public void paint(Graphics g) {
 
 
     public void move() {
-        paddle1.move();
-        paddle2.move();
+        ball.move();
+        paddle1.movePad1();
+        paddle2.movePad2();
     }
 
     public void checkCollision() {
