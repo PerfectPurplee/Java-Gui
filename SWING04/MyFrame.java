@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class MyFrame extends JFrame implements ActionListener{
 
     Dimension dimension = new Dimension(500,500);
-    ImageIcon icon = new ImageIcon("pengu.png");
+    ImageIcon icon = new ImageIcon("Images/pengu.png");
     JButton button;
     JLabel label;
 
