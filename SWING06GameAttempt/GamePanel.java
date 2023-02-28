@@ -33,6 +33,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.addKeyListener(new AL());
         this.setPreferredSize(SCREEN_SIZE);
 
+
         gameThread = new Thread(this);
         gameThread.start();
 
